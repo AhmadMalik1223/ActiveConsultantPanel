@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "Addfavouriteclass";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Add Class</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="">Student</a></li>
+                        <li class="breadcrumb-item active">Add Class</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-default">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Subject</label>
+                                <input type="text" class="form-control select2" id="date" name="registration" required="required">
+                            </div>
+                         </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Is School Validate</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Is School Valid</option>
+                                    <option>Valid</option>
+                                    <option>Invalid</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12">
+                            <div class="form-group">
+                                <label>Description</label>
+                                <div class="card-body">
+                                    <textarea id="summernote">Place<em>some</em><u>text</u><strong>here</strong></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Save and Go back to list</button>
+                            <button type="submit" class="btn btn-primary">Cancel</button>
+                        </div>
+                    </div>
+                    <!--Student Information End-->
+                </div>
+                <!-- /.card -->
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+

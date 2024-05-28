@@ -1,0 +1,414 @@
+﻿
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Createstudent";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Student Form</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="">Student</a></li>
+                        <li class="breadcrumb-item active">Student Form</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-default">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>School Name</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Alabama</option>
+                                    <option>Alaska</option>
+                                    <option>California</option>
+                                    <option>Delaware</option>
+                                    <option>Tennessee</option>
+                                    <option>Texas</option>
+                                    <option>Washington</option>
+                                </select>
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label>Is School Validate</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Is School Valid</option>
+                                    <option>Valid</option>
+                                    <option>Invalid</option>
+                                </select>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Registration No</label>
+                                <input type="text" class="form-control select2" id="date" name="registration" required="required">
+                            </div>
+                            <!-- /.form-group -->
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control select2" id="date" name="username" required="required">
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control select2" name="password" required="required">
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>School Name</label>
+                                <div class="select2-purple">
+                                    <input type="text" class="form-control select2" name="school name" required="required">
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Princincal Name</label>
+                                <input type="password" class="form-control select2" name="password" required="required">
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>School Phone</label>
+                                <div class="select2-purple">
+                                    <input type="text" class="form-control select2" name="school name" required="required">
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>School Location</label>
+                                <input type="password" class="form-control select2" name="password" required="required">
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Class or Grade</label>
+                                <div class="select2-purple">
+                                    <input type="text" class="form-control select2" name="school name" required="required">
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="password" class="form-control select2" name="password" required="required">
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                @*<label>Profile Image</label>*@
+                                <div class="card-body">
+                                    <div id="actions" class="row">
+                                        <div class="col-lg-6">
+                                            <div class="btn-group w-100">
+                                                <span class="btn btn-success col fileinput-button">
+                                                    <i class="fas fa-plus"></i>
+                                                    <span>Profile Image</span>
+                                                </span>
+                                                <button type="reset" class="btn btn-warning col cancel">
+                                                    <i class="fas fa-times-circle"></i>
+                                                    <span>Cancel upload</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 d-flex align-items-center">
+                                            <div class="fileupload-process w-100">
+                                                <div id="total-progress" class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="table table-striped files" id="previews">
+                                        <div id="template" class="row mt-2">
+                                            <div class="col-auto">
+                                                <span class="preview"><img src="data:," alt="" data-dz-thumbnail /></span>
+                                            </div>
+                                            <div class="col d-flex align-items-center">
+                                                <p class="mb-0">
+                                                    <span class="lead" data-dz-name></span>
+                                                    (<span data-dz-size></span>)
+                                                </p>
+                                                <strong class="error text-danger" data-dz-errormessage></strong>
+                                            </div>
+                                            <div class="col-4 d-flex align-items-center">
+                                                <div class="progress progress-striped active w-100" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                                    <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-auto d-flex align-items-center">
+                                                <div class="btn-group">
+                                                    <button class="btn btn-primary start">
+                                                        <i class="fas fa-upload"></i>
+                                                        <span>Start</span>
+                                                    </button>
+                                                    <button data-dz-remove class="btn btn-warning cancel">
+                                                        <i class="fas fa-times-circle"></i>
+                                                        <span>Cancel</span>
+                                                    </button>
+                                                    <button data-dz-remove class="btn btn-danger delete">
+                                                        <i class="fas fa-trash"></i>
+                                                        <span>Delete</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
+                    </div>
+                    <!-- /.card-body -->
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Academic Record</label>
+                                <input type="text" class="form-control select2" name="password" required="required">
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Active</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Select Status</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </div>
+                            <!-- /.form-group -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!--Student Information Start-->
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>First Name</label>
+                                <input type="text" class="form-control select2" name="password" required="required">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Last Name</label>
+                                <input type="text" class="form-control select2" name="password" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Guardian Name</label>
+                                <input type="text" class="form-control select2" name="password" required="required">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Family Info</label>
+                                <input type="text" class="form-control select2" name="password" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Select Gender</option>
+                                    <option>Male</option>
+                                    <option>Female</option>
+                                    <option>Unknown</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Date Of Birth</label>
+                                <div class="input-group date" id="reservationdate" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input" data-target="#reservationdate" />
+                                    <div class="input-group-append" data-target="#reservationdate" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>CNIC</label>
+                                <input type="text" class="form-control select2" name="password" required="required">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" class="form-control select2" name="password" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Province</label>
+                                <input type="text" class="form-control select2" name="password" required="required">
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>City</label>
+                                <input type="text" class="form-control select2" name="password" required="required">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" class="form-control select2" name="password" required="required">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12">
+                            <div class="form-group">
+                                <label>About Me</label>
+                                <div class="card-body">
+                                    <textarea id="summernote">
+                Place <em>some</em> <u>text</u> <strong>here</strong>
+              </textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Select Future Job</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Select Gender</option>
+                                    <option>Get list from database </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Show On Home Page</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Status on Home Page</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Is Cnic Verified</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Select Status</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Is Address Verified</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Select Addres Status</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Is Phone Verified</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Select Phone Status</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Select Phone Status</option>
+                                    <option>In process</option>
+                                    <option>Verified</option>
+                                    <option>Rejected</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary">Save and Go back to list</button>
+                            <button type="submit" class="btn btn-primary">Cancel</button>
+                        </div>
+                    </div>
+                    <!--Student Information End-->
+                </div>
+                <!-- /.card -->
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+

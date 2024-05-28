@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Adddivision";
+}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Add Division</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="">Student</a></li>
+                        <li class="breadcrumb-item active">Add Division</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-default">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Province Name</label>
+                                <input type="text" class="form-control select2" id="date" name="registration" required="required">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>CIty Name</label>
+                                <input type="text" class="form-control select2" id="date" name="registration" required="required">
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control select2" style="width: 100%;">
+                                    <option selected="selected">Select Status</option>
+                                    <option>Active</option>
+                                    <option>Inactive</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleInputFile">City Image</label>
+                                <div class="input-group">
+                                    <div class="custom-file">
+                                        <input type="file" class="custom-file-input" id="exampleInputFile">
+                                        <label class="custom-file-label" for="exampleInputFile">Choose Photo</label>
+                                    </div>
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Upload</span>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <div class="row">
+                            <div class="col-12 col-sm-12">
+                                <div class="form-group">
+                                    <label>Description</label>
+                                    <div class="card-body">
+                                        <textarea id="summernote">Place<em>some</em><u>text</u><strong>here</strong></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6">
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary">Save and Go back to list</button>
+                                <button type="submit" class="btn btn-primary">Cancel</button>
+                            </div>
+                        </div>
+                        <!--Student Information End-->
+                    </div>
+                <!-- /.card -->
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+

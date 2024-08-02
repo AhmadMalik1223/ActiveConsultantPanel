@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ilm Dost Admin Panel</title>
+    <title>HR Form</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -208,91 +208,50 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <!-- Add icons to the links using the .nav-icon class
-                        with font-awesome or any other icon font library -->
+    with font-awesome or any other icon font library -->
                         <li class="nav-item menu-open">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Manage Students
+                                    Manage Applicants
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="@Url.Action("Createstudent","Student")" class="nav-link active">
+                                    <a href="@Url.Action("Createapplicant","Applicant")" class="nav-link active">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Add New Student</p>
+                                        <p>Add New Applicant</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("Studentlist","Student")" class="nav-link">
+                                    <a href="@Url.Action("Applicantlist","Applicant")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Student List</p>
+                                        <p>Applicant List</p>
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Studentgroup","Student")" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Student Groups</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Addfavouriteclass","Student")" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Class</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Favouriteclass","Student")" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Favourite Classes</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Addnewjob","Student")" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add Job</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Studentfuturejobs","Student")" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Future Jobs</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Adddivision","Student")" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Add New Division</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="@Url.Action("Managedivisions","Student")" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Manage Divisions</p>
-                                    </a>
-                                </li>
+                                
                             </ul>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Manage Donors
+                                    Manage Companies
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="@Url.Action("Adddonor","Donor")" class="nav-link">
+                                    <a href="@Url.Action("Addcompany","Company")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Active Donor</p>
+                                        <p>Add Company</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="@Url.Action("Managedonors","Donor")" class="nav-link">
+                                    <a href="@Url.Action("Managecompany","Company")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Manage Donors</p>
+                                        <p>Manage Companies</p>
                                     </a>
                                 </li>
                             </ul>
@@ -301,21 +260,21 @@ scratch. This page gets rid of all links and provides the needed markup only.
                             <a href="#" class="nav-link ">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
                                 <p>
-                                    Transactions
+                                    Departments
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link ">
+                                    <a href="@Url.Action("Adddepartment","Dsgn")" class="nav-link ">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Active Page</p>
+                                        <p>Add Department</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="#" class="nav-link">
+                                    <a href="@Url.Action("Managedepartment","Dsgn")" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
-                                        <p>Inactive Page</p>
+                                        <p>Manage Department</p>
                                     </a>
                                 </li>
                             </ul>
@@ -362,6 +321,29 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                     <a href="#" class="nav-link">
                                         <i class="far fa-circle nav-icon"></i>
                                         <p>Inactive Page</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt"></i>
+                                <p>
+                                    Manage FAQs
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Faqs</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Faqs List</p>
                                     </a>
                                 </li>
                             </ul>

@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -121,11 +129,49 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\DonorController.cs" />
+    <Compile Include="Controllers\CompanyController.cs" />
+    <Compile Include="Controllers\ApplicantController.cs" />
+    <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Admin.cs">
+      <DependentUpon>modeljob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Application.cs">
+      <DependentUpon>modeljob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Company.cs">
+      <DependentUpon>modeljob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Department.cs">
+      <DependentUpon>modeljob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Job.cs">
+      <DependentUpon>modeljob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\modeljob.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>modeljob.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\modeljob.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>modeljob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\modeljob.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>modeljob.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>modeljob.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\User.cs">
+      <DependentUpon>modeljob.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2073,6 +2119,16 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\modeljob.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>modeljob.edmx</DependentUpon>
+      <LastGenOutput>modeljob.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\modeljob.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>modeljob.edmx</DependentUpon>
+      <LastGenOutput>modeljob.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -2211,6 +2267,13 @@
     <Content Include="Content\dist\js\.eslintrc.json" />
     <Content Include="Content\dist\js\adminlte.js.map" />
     <Content Include="Content\dist\js\adminlte.min.js.map" />
+    <EntityDeploy Include="Models\modeljob.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>modeljob.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\modeljob.edmx.diagram">
+      <DependentUpon>modeljob.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2233,26 +2296,27 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Shared\_Layoutaccounts.cshtml" />
-    <Content Include="Views\Student\Createstudent.cshtml" />
-    <Content Include="Views\Student\Studentlist.cshtml" />
-    <Content Include="Views\Student\Studentgroup.cshtml" />
-    <Content Include="Views\Student\Favouriteclass.cshtml" />
-    <Content Include="Views\Student\Addfavouriteclass.cshtml" />
-    <Content Include="Views\Student\Studentfuturejobs.cshtml" />
-    <Content Include="Views\Student\Addnewjob.cshtml" />
-    <Content Include="Views\Student\Adddivision.cshtml" />
-    <Content Include="Views\Student\Managedivisions.cshtml" />
-    <Content Include="Views\Donor\Adddonor.cshtml" />
-    <Content Include="Views\Donor\Managedonors.cshtml" />
+    <Content Include="Views\Applicant\Createapplicant.cshtml" />
+    <Content Include="Views\Applicant\Applicantlist.cshtml" />
+    <Content Include="Views\Applicant\Studentgroup.cshtml" />
+    <Content Include="Views\Applicant\Favouriteclass.cshtml" />
+    <Content Include="Views\Applicant\Addfavouriteclass.cshtml" />
+    <Content Include="Views\Applicant\Studentfuturejobs.cshtml" />
+    <Content Include="Views\Applicant\Addnewjob.cshtml" />
+    <Content Include="Views\Applicant\Adddivision.cshtml" />
+    <Content Include="Views\Applicant\Managedivisions.cshtml" />
+    <Content Include="Views\Company\Addcompany.cshtml" />
+    <Content Include="Views\Company\Managecompany.cshtml" />
+    <Content Include="Views\User\Adduser.cshtml" />
+    <Content Include="Views\User\Userlist.cshtml" />
+    <Content Include="Views\Home\Dashboard.cshtml" />
+    <Content Include="Views\Department\Adddepartment.cshtml" />
+    <Content Include="Views\Department\Managedepartment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
@@ -2280,6 +2344,9 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

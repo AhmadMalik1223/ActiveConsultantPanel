@@ -6,10 +6,14 @@ using System.Web.Mvc;
 
 namespace IlmdostPanel.Controllers
 {
-    public class HomeController : Controller
+    public class UserController : Controller
     {
-        // GET: Home
-        public ActionResult Dashboard()
+        // GET: User
+        public ActionResult Adduser()
+        {
+            return View();
+        }
+        public ActionResult Userlist()
         {
             return View();
         }

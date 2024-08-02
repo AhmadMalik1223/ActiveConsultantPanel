@@ -6,14 +6,14 @@ using System.Web.Mvc;
 
 namespace IlmdostPanel.Controllers
 {
-    public class DonorController : Controller
+    public class DepartmentController : Controller
     {
-        // GET: Donor
-        public ActionResult Adddonor()
+        // GET: Department
+        public ActionResult Adddepartment()
         {
             return View();
         }
-        public ActionResult Managedonors()
+        public ActionResult Managedepartment()
         {
             return View();
         }

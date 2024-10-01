@@ -1,0 +1,99 @@
+﻿@using IlmdostPanel.Models
+@model Job
+@{
+    ViewBag.Title = "Editjob";
+}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Edit Job</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="">Job</a></li>
+                        <li class="breadcrumb-item active">Edit Job</li>
+                    </ol>
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </section>
+    <!-- Main content -->
+    <section class="content">
+        <div class="container-fluid">
+            <!-- SELECT2 EXAMPLE -->
+            <div class="card card-default">
+                <div class="card-body">
+                    @using (Html.BeginForm("Editjob", "Job", FormMethod.Post))
+                    {
+                        <div class="row">
+                            @Html.HiddenFor(m => m.job_id)
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Company Name</label>
+                                    @*@Html.TextBoxFor(m => m.company_id, new { required = "required", @class = "form-control select2" })*@
+
+                                    @Html.DropDownList("company_id", new SelectList(ViewBag.Companylist as List<IlmdostPanel.Models.Company>, "company_id", "company_name"),
+                                    "Select Company", new { @class = "form-control select2", })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    @Html.DropDownList("department_id", new SelectList(ViewBag.Departmentlist as List<IlmdostPanel.Models.Department>, "department_id", "department_title"),
+                                    "Select Department", new { @class = "form-control select2", })
+
+
+                                    @*@Html.TextBoxFor(m => m.department_id, new { required = "required", @class = "form-control select2" })*@
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Job Title</label>
+
+                                    @Html.TextBoxFor(m => m.job_title, new { @type = "text", required = "required", @class = "form-control select2" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Start Date</label>
+
+
+                                    @Html.TextBoxFor(m => m.start_time, new { @class = "form-control", @type = "date", @placeholder = "Date of Birth", @id = "dob" })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>End Date</label>
+
+                                    @Html.TextBoxFor(m => m.end_time, new { @class = "form-control", @type = "date", @placeholder = "Date of Birth", @id = "dob" })
+
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label>Job Desciption</label>
+                                    @Html.TextAreaFor(m => m.job_description, new { required = "required", @class = "form-control select2", id = "summernote" })
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Update Job</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    <!--Student Information End-->
+                </div>
+                <!-- /.card -->
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+    </section>
+    <!-- /.content -->
+</div>
+
+
+

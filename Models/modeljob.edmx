@@ -41,15 +41,16 @@
           <Property Name="company_contact" Type="nvarchar" MaxLength="15" />
           <Property Name="company_about" Type="nvarchar" MaxLength="500" />
           <Property Name="company_registration" Type="nvarchar" MaxLength="50" />
+          <Property Name="company_status" Type="bit" />
         </EntityType>
         <EntityType Name="Department">
           <Key>
             <PropertyRef Name="department_id" />
           </Key>
-          <Property Name="department_id" Type="int" Nullable="false" />
+          <Property Name="department_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="department_title" Type="nvarchar" MaxLength="50" />
           <Property Name="created_by" Type="nvarchar" MaxLength="50" />
-          <Property Name="timstamp" Type="datetime" />
+          <Property Name="timestamp" Type="datetime" />
           <Property Name="company_id" Type="int" />
         </EntityType>
         <EntityType Name="Job">
@@ -60,32 +61,22 @@
           <Property Name="company_id" Type="int" />
           <Property Name="job_title" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="job_description" Type="text" Nullable="false" />
-          <Property Name="start_time" Type="datetime" />
-          <Property Name="end_time" Type="datetime" />
+          <Property Name="start_time" Type="date" />
+          <Property Name="end_time" Type="date" />
           <Property Name="created_at" Type="datetime" />
           <Property Name="department_id" Type="int" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
+          <Property Name="user_id" Type="int" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="user_id" />
           </Key>
           <Property Name="user_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="first_name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="255" />
           <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="full_name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="created_at" Type="datetime" />
-          <Property Name="father_name" Type="nvarchar" MaxLength="50" />
+          <Property Name="last_name" Type="nvarchar" MaxLength="50" />
           <Property Name="cv" Type="nvarchar" MaxLength="500" />
           <Property Name="Image" Type="nvarchar" MaxLength="500" />
           <Property Name="description" Type="nvarchar" MaxLength="350" />
@@ -93,6 +84,12 @@
           <Property Name="experience" Type="nvarchar" MaxLength="500" />
           <Property Name="cover_letter" Type="nvarchar" MaxLength="500" />
           <Property Name="cnic" Type="nvarchar" MaxLength="15" />
+          <Property Name="phone" Type="nvarchar" MaxLength="15" />
+          <Property Name="job_id" Type="int" />
+          <Property Name="status" Type="bit" />
+          <Property Name="currentsalary" Type="nvarchar" MaxLength="50" />
+          <Property Name="perksbenefits" Type="nvarchar" MaxLength="250" />
+          <Property Name="currentlocation" Type="nvarchar" MaxLength="150" />
         </EntityType>
         <Association Name="FK__Applicati__job_i__4BAC3F29">
           <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
@@ -154,13 +151,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Job_User">
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Job" Type="Self.Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Job">
+          <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="job_id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="job_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="JobPortalModelStoreContainer">
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Applicati__job_i__4BAC3F29" Association="Self.FK__Applicati__job_i__4BAC3F29">
             <End Role="Job" EntitySet="Job" />
@@ -182,6 +202,14 @@
             <End Role="Department" EntitySet="Department" />
             <End Role="Job" EntitySet="Job" />
           </AssociationSet>
+          <AssociationSet Name="FK_Job_User" Association="Self.FK_Job_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Job" EntitySet="Job" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Job" Association="Self.FK_User_Job">
+            <End Role="Job" EntitySet="Job" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -193,7 +221,6 @@
           <EntitySet Name="Companies" EntityType="JobPortalModel.Company" />
           <EntitySet Name="Departments" EntityType="JobPortalModel.Department" />
           <EntitySet Name="Jobs" EntityType="JobPortalModel.Job" />
-          <EntitySet Name="sysdiagrams" EntityType="JobPortalModel.sysdiagram" />
           <EntitySet Name="Users" EntityType="JobPortalModel.User" />
           <AssociationSet Name="FK__Applicati__job_i__4BAC3F29" Association="JobPortalModel.FK__Applicati__job_i__4BAC3F29">
             <End Role="Job" EntitySet="Jobs" />
@@ -214,6 +241,14 @@
           <AssociationSet Name="FK_Job_Department" Association="JobPortalModel.FK_Job_Department">
             <End Role="Department" EntitySet="Departments" />
             <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Job_User" Association="JobPortalModel.FK_Job_User">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Job" EntitySet="Jobs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Job" Association="JobPortalModel.FK_User_Job">
+            <End Role="Job" EntitySet="Jobs" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Admin">
@@ -254,6 +289,7 @@
           <Property Name="company_contact" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
           <Property Name="company_about" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="company_registration" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="company_status" Type="Boolean" />
           <NavigationProperty Name="Jobs" Relationship="JobPortalModel.FK__Job__company_id__4222D4EF" FromRole="Company" ToRole="Job" />
           <NavigationProperty Name="Departments" Relationship="JobPortalModel.FK_Department_Department" FromRole="Company" ToRole="Department" />
         </EntityType>
@@ -261,10 +297,10 @@
           <Key>
             <PropertyRef Name="department_id" />
           </Key>
-          <Property Name="department_id" Type="Int32" Nullable="false" />
+          <Property Name="department_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="department_title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="created_by" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="timstamp" Type="DateTime" Precision="3" />
+          <Property Name="timestamp" Type="DateTime" Precision="3" />
           <Property Name="company_id" Type="Int32" />
           <NavigationProperty Name="Company" Relationship="JobPortalModel.FK_Department_Department" FromRole="Department" ToRole="Company" />
           <NavigationProperty Name="Jobs" Relationship="JobPortalModel.FK_Job_Department" FromRole="Department" ToRole="Job" />
@@ -277,35 +313,27 @@
           <Property Name="company_id" Type="Int32" />
           <Property Name="job_title" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="job_description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="start_time" Type="DateTime" Precision="3" />
-          <Property Name="end_time" Type="DateTime" Precision="3" />
+          <Property Name="start_time" Type="DateTime" Precision="0" />
+          <Property Name="end_time" Type="DateTime" Precision="0" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
           <Property Name="department_id" Type="Int32" />
+          <Property Name="user_id" Type="Int32" />
           <NavigationProperty Name="Applications" Relationship="JobPortalModel.FK__Applicati__job_i__4BAC3F29" FromRole="Job" ToRole="Application" />
           <NavigationProperty Name="Company" Relationship="JobPortalModel.FK__Job__company_id__4222D4EF" FromRole="Job" ToRole="Company" />
           <NavigationProperty Name="Department" Relationship="JobPortalModel.FK_Job_Department" FromRole="Job" ToRole="Department" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="User" Relationship="JobPortalModel.FK_Job_User" FromRole="Job" ToRole="User" />
+          <NavigationProperty Name="Users" Relationship="JobPortalModel.FK_User_Job" FromRole="Job" ToRole="User" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="user_id" />
           </Key>
           <Property Name="user_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="full_name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="created_at" Type="DateTime" Precision="3" />
-          <Property Name="father_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="cv" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Image" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="350" FixedLength="false" Unicode="true" />
@@ -313,7 +341,15 @@
           <Property Name="experience" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="cover_letter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="cnic" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="job_id" Type="Int32" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="currentsalary" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="perksbenefits" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="currentlocation" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Applications" Relationship="JobPortalModel.FK__Applicati__user___4CA06362" FromRole="User" ToRole="Application" />
+          <NavigationProperty Name="Jobs" Relationship="JobPortalModel.FK_Job_User" FromRole="User" ToRole="Job" />
+          <NavigationProperty Name="Job" Relationship="JobPortalModel.FK_User_Job" FromRole="User" ToRole="Job" />
         </EntityType>
         <Association Name="FK__Applicati__job_i__4BAC3F29">
           <End Type="JobPortalModel.Job" Role="Job" Multiplicity="0..1" />
@@ -375,6 +411,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Job_User">
+          <End Type="JobPortalModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="JobPortalModel.Job" Role="Job" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="user_id" />
+            </Principal>
+            <Dependent Role="Job">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Job">
+          <End Type="JobPortalModel.Job" Role="Job" Multiplicity="0..1" />
+          <End Type="JobPortalModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Job">
+              <PropertyRef Name="job_id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="job_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -409,6 +469,7 @@
           <EntitySetMapping Name="Companies">
             <EntityTypeMapping TypeName="JobPortalModel.Company">
               <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="company_status" ColumnName="company_status" />
                 <ScalarProperty Name="company_registration" ColumnName="company_registration" />
                 <ScalarProperty Name="company_about" ColumnName="company_about" />
                 <ScalarProperty Name="company_contact" ColumnName="company_contact" />
@@ -425,7 +486,7 @@
             <EntityTypeMapping TypeName="JobPortalModel.Department">
               <MappingFragment StoreEntitySet="Department">
                 <ScalarProperty Name="company_id" ColumnName="company_id" />
-                <ScalarProperty Name="timstamp" ColumnName="timstamp" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
                 <ScalarProperty Name="created_by" ColumnName="created_by" />
                 <ScalarProperty Name="department_title" ColumnName="department_title" />
                 <ScalarProperty Name="department_id" ColumnName="department_id" />
@@ -435,6 +496,7 @@
           <EntitySetMapping Name="Jobs">
             <EntityTypeMapping TypeName="JobPortalModel.Job">
               <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
                 <ScalarProperty Name="department_id" ColumnName="department_id" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
                 <ScalarProperty Name="end_time" ColumnName="end_time" />
@@ -446,20 +508,15 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="JobPortalModel.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="JobPortalModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="currentlocation" ColumnName="currentlocation" />
+                <ScalarProperty Name="perksbenefits" ColumnName="perksbenefits" />
+                <ScalarProperty Name="currentsalary" ColumnName="currentsalary" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="job_id" ColumnName="job_id" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
                 <ScalarProperty Name="cnic" ColumnName="cnic" />
                 <ScalarProperty Name="cover_letter" ColumnName="cover_letter" />
                 <ScalarProperty Name="experience" ColumnName="experience" />
@@ -467,12 +524,11 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="Image" ColumnName="Image" />
                 <ScalarProperty Name="cv" ColumnName="cv" />
-                <ScalarProperty Name="father_name" ColumnName="father_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
                 <ScalarProperty Name="created_at" ColumnName="created_at" />
-                <ScalarProperty Name="full_name" ColumnName="full_name" />
                 <ScalarProperty Name="email" ColumnName="email" />
                 <ScalarProperty Name="password" ColumnName="password" />
-                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
                 <ScalarProperty Name="user_id" ColumnName="user_id" />
               </MappingFragment>
             </EntityTypeMapping>

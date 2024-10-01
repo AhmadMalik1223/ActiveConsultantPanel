@@ -57,7 +57,17 @@ namespace IlmdostPanel.Controllers
         }
         public ActionResult Logout()
         {
-            return View();
+            try
+            {
+                FormsAuthentication.SignOut();
+                Session["usernamecshow"] = null;
+              //  Session.Clear();
+                return RedirectToAction("Login", "Account");
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
         }
        
         public ActionResult Forgetpassword()

@@ -23,7 +23,7 @@ namespace IlmdostPanel.Models
         public int department_id { get; set; }
         public string department_title { get; set; }
         public string created_by { get; set; }
-        public Nullable<System.DateTime> timstamp { get; set; }
+        public Nullable<System.DateTime> timestamp { get; set; }
         public Nullable<int> company_id { get; set; }
     
         public virtual Company Company { get; set; }

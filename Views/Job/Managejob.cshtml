@@ -1,26 +1,25 @@
-﻿@model List<IlmdostPanel.Models.User>
-
+﻿@model List<IlmdostPanel.Models.Job> 
 @{
-    ViewBag.Title = "Applicantlist";
+    ViewBag.Title = "Managejob";
 }
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Applicant List</h1>
+                    <h1>Manage Jobs</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item"><a href="#">Applicant</a></li>
-                        <li class="breadcrumb-item active">List</li>
+                        <li class="breadcrumb-item"><a href="#">Jobs</a></li>
+                        <li class="breadcrumb-item active">Manage Jobs</li>
                     </ol>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
     </section>
-
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">
@@ -28,42 +27,48 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Add New Applicant</h3>
+                            <h3 class="card-title">Jobs List</h3>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Applicant&nbsp;ID</th>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Applied For</th>
-                                        <th>Cv</th>
+                                        <th>Company&nbsp;Name</th>
+                                        <th>Department&nbsp;Name</th>
+                                        <th>Job&nbsp;Title</th>
+                                        <th>Job&nbsp;Description</th>
+                                        <th>Start&nbsp;Date</th>
+                                        <th>End&nbsp;Date</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>@item.user_id</td>
-                                            <td>@item.first_name @item.last_name</td>
-                                            <td>@item.email</td>
-                                            <td>@item.phone</td>
-                                            <td>@item.Job.job_title</td>
-                                            <td>@item.cv</td>
+                                            <td>@item.Company.company_name</td>
+                                            <td>@item.Department.department_title</td>
+                                            <td>@item.job_title</td>
+                                            <td>@item.job_description</td>
+                                            <td>@item.start_time</td>
+                                            <td>@item.end_time</td>
+                                            <td>
+                                                <a href="~/Job/Editjob?job_id=@item.job_id">Edit<i class="la la-upload"></i></a>
+                                                <a href="~/Job/Deletejob?job_id=@item.job_id">Delete<i class="la la-edit edit"></i></a>
+                                            </td>
                                         </tr>
                                     }
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Applicant&nbsp;ID</th>
                                         <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone</th>
-                                        <th>Applied For</th>
-                                        <th>Cv</th>
+                                        <th>Registration&nbsp;No</th>
+                                        <th>Owner&nbsp;Name</th>
+                                        <th>Company&nbsp;Contact</th>
+                                        <th>Address</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </tfoot>
                             </table>

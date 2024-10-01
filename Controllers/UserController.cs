@@ -11,10 +11,18 @@ namespace IlmdostPanel.Controllers
         // GET: User
         public ActionResult Adduser()
         {
+            if (@Session["usernamecshow"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
         public ActionResult Userlist()
         {
+            if (@Session["usernamecshow"] == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
     }

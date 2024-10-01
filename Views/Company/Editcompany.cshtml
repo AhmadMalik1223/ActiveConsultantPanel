@@ -1,9 +1,7 @@
-﻿
-@using IlmdostPanel.Models
+﻿@using IlmdostPanel.Models
 @model Company
 @{
-
-    ViewBag.Title = "Addcompany";
+    ViewBag.Title = "Editcompany";
 }
 
 <div class="content-wrapper">
@@ -12,12 +10,12 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Add Company</h1>                  
+                    <h1>Edit Company</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="">Company</a></li>
-                        <li class="breadcrumb-item active">Add Company</li>
+                        <li class="breadcrumb-item active">Edit Company</li>
                     </ol>
                 </div>
             </div>
@@ -29,44 +27,46 @@
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-body">
-                    @using (Html.BeginForm("Addcompanys", "Company", FormMethod.Post))
+                    @using (Html.BeginForm("Editcompany", "Company", FormMethod.Post))
                     {
                         <div class="row">
+                            @Html.HiddenFor(m => m.company_id)
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Company Name</label>
-                                    @Html.TextBoxFor(m => m.company_name, new { @type = "text", required = "required", @class = "form-control select2" })
+                                    @Html.TextBoxFor(m => m.company_name, new { required = "required", @class = "form-control select2" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Registration No</label>
-                                    @Html.TextBoxFor(m => m.company_registration, new { @type = "number", required = "required", @class = "form-control select2" })
+
+                                    @Html.TextBoxFor(m => m.company_registration, new { required = "required", @class = "form-control select2" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Email</label>
-                                    @Html.TextBoxFor(m => m.company_email, new { @type = "email", required = "required", @class = "form-control select2" })
+                                    @Html.TextBoxFor(m => m.company_email, new { required = "required", @class = "form-control select2" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Contact No</label>
-                                    @Html.TextBoxFor(m => m.company_contact, new { @type = "number", required = "required", @class = "form-control select2" })
+                                    @Html.TextBoxFor(m => m.company_contact, new { required = "required", @class = "form-control select2" })
                                 </div>
                             </div>
                             <!-- /.col -->
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Owner Name</label>
-                                    @Html.TextBoxFor(m => m.company_owner, new { @type = "name", required = "required", @class = "form-control select2" })
+                                    @Html.TextBoxFor(m => m.company_owner, new { required = "required", @class = "form-control select2" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Company Address</label>
-                                    @Html.TextBoxFor(m => m.company_address, new { @type = "name", required = "required", @class = "form-control select2" })
+                                    @Html.TextBoxFor(m => m.company_address, new { required = "required", @class = "form-control select2" })
                                 </div>
                             </div>
                             <!-- /.col -->
@@ -81,7 +81,7 @@
                             </div>
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Add Company</button>
+                                    <button type="submit" class="btn btn-primary">Edit Company</button>
                                 </div>
                             </div>
                         </div>
@@ -96,4 +96,6 @@
     </section>
     <!-- /.content -->
 </div>
+
+
 

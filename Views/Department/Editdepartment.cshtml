@@ -1,20 +1,21 @@
 ﻿@using IlmdostPanel.Models
 @model Department
 @{
-    ViewBag.Title = "Adddepartment";
+    ViewBag.Title = "Editdepartment";
 }
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Add Department</h1>
+                    <h1>Edit Department</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="">Department</a></li>
-                        <li class="breadcrumb-item active">Add Department</li>
+                        <li class="breadcrumb-item active">Edit Department</li>
                     </ol>
                 </div>
             </div>
@@ -26,9 +27,10 @@
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-body">
-                    @using (Html.BeginForm("Adddepartment", "Department", FormMethod.Post))
+                    @using (Html.BeginForm("Editdepartment", "Department", FormMethod.Post))
                     {
                         <div class="row">
+                            @Html.HiddenFor(m => m.department_id)
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Company Name</label>
@@ -42,13 +44,13 @@
                                 <div class="form-group">
                                     <label>Department Name</label>
 
-                                    @Html.TextBoxFor(m => m.department_title, new { @type = "text", required = "required", @class = "form-control select2" })
+                                    @Html.TextBoxFor(m => m.department_title, new { required = "required", @class = "form-control select2" })
                                 </div>
                             </div>
 
                             <div class="col-12 col-sm-6">
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary">Add Department</button>
+                                    <button type="submit" class="btn btn-primary">Update Department</button>
                                 </div>
                             </div>
                         </div>
@@ -62,4 +64,6 @@
     </section>
     <!-- /.content -->
 </div>
+
+
 

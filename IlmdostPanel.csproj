@@ -133,6 +133,7 @@
     <Compile Include="Controllers\ApplicantController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -166,9 +167,6 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>modeljob.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>modeljob.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>modeljob.tt</DependentUpon>
@@ -206,6 +204,7 @@
     <Content Include="Content\dist\css\alt\adminlte.pages.min.css" />
     <Content Include="Content\dist\css\alt\adminlte.plugins.css" />
     <Content Include="Content\dist\css\alt\adminlte.plugins.min.css" />
+    <Content Include="Content\dist\img\ACTIVE.png" />
     <Content Include="Content\dist\img\AdminLTELogo.png" />
     <Content Include="Content\dist\img\avatar.png" />
     <Content Include="Content\dist\img\avatar2.png" />
@@ -2300,13 +2299,6 @@
     <Content Include="Views\Shared\_Layoutaccounts.cshtml" />
     <Content Include="Views\Applicant\Createapplicant.cshtml" />
     <Content Include="Views\Applicant\Applicantlist.cshtml" />
-    <Content Include="Views\Applicant\Studentgroup.cshtml" />
-    <Content Include="Views\Applicant\Favouriteclass.cshtml" />
-    <Content Include="Views\Applicant\Addfavouriteclass.cshtml" />
-    <Content Include="Views\Applicant\Studentfuturejobs.cshtml" />
-    <Content Include="Views\Applicant\Addnewjob.cshtml" />
-    <Content Include="Views\Applicant\Adddivision.cshtml" />
-    <Content Include="Views\Applicant\Managedivisions.cshtml" />
     <Content Include="Views\Company\Addcompany.cshtml" />
     <Content Include="Views\Company\Managecompany.cshtml" />
     <Content Include="Views\User\Adduser.cshtml" />
@@ -2314,6 +2306,11 @@
     <Content Include="Views\Home\Dashboard.cshtml" />
     <Content Include="Views\Department\Adddepartment.cshtml" />
     <Content Include="Views\Department\Managedepartment.cshtml" />
+    <Content Include="Views\Job\Addjob.cshtml" />
+    <Content Include="Views\Job\Managejob.cshtml" />
+    <Content Include="Views\Company\Editcompany.cshtml" />
+    <Content Include="Views\Department\Editdepartment.cshtml" />
+    <Content Include="Views\Job\Editjob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

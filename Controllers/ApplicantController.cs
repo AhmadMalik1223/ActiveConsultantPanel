@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IlmdostPanel.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,7 @@ namespace IlmdostPanel.Controllers
 {
     public class ApplicantController : Controller
     {
+        JobPortalEntities db = new JobPortalEntities();
         // GET: Student
         public ActionResult Createapplicant()
         {
@@ -15,35 +17,19 @@ namespace IlmdostPanel.Controllers
         }
         public ActionResult Applicantlist()
         {
-            return View();
-        }
-        public ActionResult Studentgroup()
-        {
-            return View();
-        }
-        public ActionResult Favouriteclass()
-        {
-            return View();
-        }
-        public ActionResult Addfavouriteclass()
-        {
-            return View();
-        }
-        public ActionResult Studentfuturejobs()
-        {
-            return View();
-        }
-        public ActionResult Addnewjob()
-        {
-            return View();
-        }
-        public ActionResult Adddivision()
-        {
-            return View();
-        }
-        public ActionResult Managedivisions()
-        {
-            return View();
+            try
+            {
+                if (@Session["usernamecshow"] == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                var reg = db.Users.ToList();
+                return View(reg);
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
         }
     }
 }

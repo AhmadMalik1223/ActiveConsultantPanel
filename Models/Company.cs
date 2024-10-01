@@ -30,6 +30,7 @@ namespace IlmdostPanel.Models
         public string company_contact { get; set; }
         public string company_about { get; set; }
         public string company_registration { get; set; }
+        public Nullable<bool> company_status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Job> Jobs { get; set; }

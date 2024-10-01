@@ -1,8 +1,7 @@
-﻿
+﻿@model List<IlmdostPanel.Models.Company>
 @{
     ViewBag.Title = "Managecompany";
 }
-
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -34,7 +33,7 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
+                                        <th>Company&nbsp;Name</th>
                                         <th>Registration&nbsp;No</th>
                                         <th>Owner&nbsp;Name</th>
                                         <th>Company&nbsp;Contact</th>
@@ -44,15 +43,20 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>Ahmad</td>
-                                        <td>Malik</td>
-                                        <td>no image</td>
-                                        <td>ahmedmalik@gmail.com</td>
-                                        <td>03334433221</td>
-                                        <td>Active</td>
-                                        <td>Edit  delete</td>
-                                    </tr>
+                                    @foreach (var item in Model) { 
+                                        <tr>
+                                            <td>@item.company_name</td>
+                                            <td>@item.company_registration</td>
+                                            <td>@item.company_owner</td>
+                                            <td>@item.company_contact</td>
+                                            <td>@item.company_address</td>
+                                            <td>@item.company_status</td>
+                                            <td>
+                                                <a href="~/Company/Editcompany?company_id=@item.company_id">Edit<i class="la la-upload"></i></a>
+                                                <a href="~/Company/Editcompany?company_id=@item.company_id">Delete<i class="la la-edit edit"></i></a>
+                                            </td>
+                                        </tr>
+                                    }
                                 </tbody>
                                 <tfoot>
                                     <tr>

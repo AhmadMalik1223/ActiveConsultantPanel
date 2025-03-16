@@ -47,27 +47,27 @@
                                     @foreach (var item in Model)
                                     {
                                         <tr>
-                                            <td>@item.Company.company_name</td>
+                                            <td>@item.Department.Company.company_name</td>
                                             <td>@item.Department.department_title</td>
                                             <td>@item.job_title</td>
                                             <td>@item.job_description</td>
                                             <td>@item.start_time</td>
                                             <td>@item.end_time</td>
                                             <td>
-                                                <a href="~/Job/Editjob?job_id=@item.job_id">Edit<i class="la la-upload"></i></a>
-                                                <a href="~/Job/Deletejob?job_id=@item.job_id">Delete<i class="la la-edit edit"></i></a>
+                                                <a href="~/Job/Editjob?job_id=@item.job_id">Edit<i class="la la-upload"></i></a> |
+                                                <a href="~/Job/Delete?job_id=@item.job_id">Delete<i class="la la-edit edit"></i></a>
                                             </td>
                                         </tr>
                                     }
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Registration&nbsp;No</th>
-                                        <th>Owner&nbsp;Name</th>
-                                        <th>Company&nbsp;Contact</th>
-                                        <th>Address</th>
-                                        <th>Status</th>
+                                        <th>Company&nbsp;Name</th>
+                                        <th>Department&nbsp;Name</th>
+                                        <th>Job&nbsp;Title</th>
+                                        <th>Job&nbsp;Description</th>
+                                        <th>Start&nbsp;Date</th>
+                                        <th>End&nbsp;Date</th>
                                         <th>Actions</th>
                                     </tr>
                                 </tfoot>

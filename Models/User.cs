@@ -18,7 +18,6 @@ namespace IlmdostPanel.Models
         public User()
         {
             this.Applications = new HashSet<Application>();
-            this.Jobs = new HashSet<Job>();
         }
     
         public int user_id { get; set; }
@@ -29,11 +28,8 @@ namespace IlmdostPanel.Models
         public string last_name { get; set; }
         public string cv { get; set; }
         public string Image { get; set; }
-        public string description { get; set; }
         public Nullable<System.DateTime> dob { get; set; }
         public string experience { get; set; }
-        public string cover_letter { get; set; }
-        public string cnic { get; set; }
         public string phone { get; set; }
         public Nullable<int> job_id { get; set; }
         public Nullable<bool> status { get; set; }
@@ -43,8 +39,5 @@ namespace IlmdostPanel.Models
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Application> Applications { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Job> Jobs { get; set; }
-        public virtual Job Job { get; set; }
     }
 }

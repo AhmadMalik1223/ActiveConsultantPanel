@@ -9,7 +9,7 @@ namespace IlmdostPanel.Controllers
 {
     public class ApplicantController : Controller
     {
-        JobPortalEntities db = new JobPortalEntities();
+        ActiveConsultantEntities db = new ActiveConsultantEntities();
         // GET: Student
         public ActionResult Createapplicant()
         {

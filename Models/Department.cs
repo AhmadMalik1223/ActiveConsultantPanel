@@ -24,7 +24,7 @@ namespace IlmdostPanel.Models
         public string department_title { get; set; }
         public string created_by { get; set; }
         public Nullable<System.DateTime> timestamp { get; set; }
-        public Nullable<int> company_id { get; set; }
+        public int company_id { get; set; }
     
         public virtual Company Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -139,37 +139,37 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Admin.cs">
-      <DependentUpon>modeljob.tt</DependentUpon>
+      <DependentUpon>HrForm.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Application.cs">
-      <DependentUpon>modeljob.tt</DependentUpon>
+      <DependentUpon>HrForm.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Company.cs">
-      <DependentUpon>modeljob.tt</DependentUpon>
+      <DependentUpon>HrForm.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Department.cs">
-      <DependentUpon>modeljob.tt</DependentUpon>
+      <DependentUpon>HrForm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HrForm.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HrForm.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HrForm.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HrForm.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HrForm.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HrForm.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Job.cs">
-      <DependentUpon>modeljob.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\modeljob.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>modeljob.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\modeljob.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>modeljob.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\modeljob.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>modeljob.edmx</DependentUpon>
+      <DependentUpon>HrForm.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\User.cs">
-      <DependentUpon>modeljob.tt</DependentUpon>
+      <DependentUpon>HrForm.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2118,15 +2118,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\modeljob.Context.tt">
+    <Content Include="Models\HrForm.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>modeljob.edmx</DependentUpon>
-      <LastGenOutput>modeljob.Context.cs</LastGenOutput>
+      <DependentUpon>HrForm.edmx</DependentUpon>
+      <LastGenOutput>HrForm.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\modeljob.tt">
+    <Content Include="Models\HrForm.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>modeljob.edmx</DependentUpon>
-      <LastGenOutput>modeljob.cs</LastGenOutput>
+      <DependentUpon>HrForm.edmx</DependentUpon>
+      <LastGenOutput>HrForm.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
@@ -2266,12 +2266,12 @@
     <Content Include="Content\dist\js\.eslintrc.json" />
     <Content Include="Content\dist\js\adminlte.js.map" />
     <Content Include="Content\dist\js\adminlte.min.js.map" />
-    <EntityDeploy Include="Models\modeljob.edmx">
+    <EntityDeploy Include="Models\HrForm.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>modeljob.Designer.cs</LastGenOutput>
+      <LastGenOutput>HrForm.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\modeljob.edmx.diagram">
-      <DependentUpon>modeljob.edmx</DependentUpon>
+    <Content Include="Models\HrForm.edmx.diagram">
+      <DependentUpon>HrForm.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />

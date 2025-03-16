@@ -10,7 +10,7 @@ namespace IlmdostPanel.Controllers
 {
     public class AccountController : Controller
     {
-        JobPortalEntities db = new JobPortalEntities();
+        ActiveConsultantEntities db = new ActiveConsultantEntities();
 
 
         // GET: Account
@@ -52,6 +52,7 @@ namespace IlmdostPanel.Controllers
             }
             catch (Exception ex)
             {
+                ViewBag.Errorlogin = ex;
                 return View();
             }
         }

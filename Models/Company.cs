@@ -17,7 +17,6 @@ namespace IlmdostPanel.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Company()
         {
-            this.Jobs = new HashSet<Job>();
             this.Departments = new HashSet<Department>();
         }
     
@@ -32,8 +31,6 @@ namespace IlmdostPanel.Models
         public string company_registration { get; set; }
         public Nullable<bool> company_status { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Job> Jobs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Department> Departments { get; set; }
     }

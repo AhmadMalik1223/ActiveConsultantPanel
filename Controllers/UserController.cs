@@ -1,4 +1,5 @@
-﻿using System;
+﻿using IlmdostPanel.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -9,6 +10,7 @@ namespace IlmdostPanel.Controllers
     public class UserController : Controller
     {
         // GET: User
+        ActiveConsultantEntities db = new ActiveConsultantEntities();
         public ActionResult Adduser()
         {
             if (@Session["usernamecshow"] == null)

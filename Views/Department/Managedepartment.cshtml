@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Manage Company</h1>
+                    <h1>Manage Department</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -46,7 +46,7 @@
                                             <td>@item.department_title</td>
                                             <td>
                                                 <a href="~/Department/Editdepartment?department_id=@item.department_id">Edit<i class="la la-upload"></i></a>
-                                                <a href="~/Department/Deletedepartment?department_id=@item.department_id">Delete<i class="la la-edit edit"></i></a>
+                                               | <a href="~/Department/Deletedepartment?department_id=@item.department_id">Delete<i class="la la-edit edit"></i></a>
                                             </td>
                                         </tr>
                                     }

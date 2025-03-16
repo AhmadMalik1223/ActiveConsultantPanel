@@ -1,6 +1,6 @@
 ﻿@model List<IlmdostPanel.Models.User>
-@{
 
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Dashboard";
 }
@@ -80,7 +80,7 @@
                         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
                         <div class="info-box-content">
-                            <span class="info-box-text">In Queue</span>
+                            <span class="info-box-text">Applicants</span>
                             <span class="info-box-number">@ViewBag.ApplicantsApplied</span>
                         </div>
                         <!-- /.info-box-content -->
@@ -114,8 +114,8 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
-                                    <th>Applied For</th>
                                     <th>Cv</th>
+                                    <th>Dated</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -126,8 +126,18 @@
                                         <td>@item.first_name @item.last_name</td>
                                         <td>@item.email</td>
                                         <td>@item.phone</td>
-                                        <td>@item.Job.job_title</td>
-                                        <td>@item.cv</td>
+                                        <td>
+                                            @if (!string.IsNullOrEmpty(item.cv))
+                                            {
+                                                <a href="@item?.cv" target="_blank" download>Download CV</a>
+                                                @*<p>Path: @item?.cv</p>*@
+                                            }
+                                            else
+                                            {
+                                                <span class="text-muted">No CV</span>
+                                            }
+                                        </td>
+                                        <td>@item.created_at</td>
                                     </tr>
                                 }
                             </tbody>

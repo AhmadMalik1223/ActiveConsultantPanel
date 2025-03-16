@@ -38,6 +38,14 @@
                                     @Html.DropDownList("company_id", new SelectList(ViewBag.Companylist as List<IlmdostPanel.Models.Company>, "company_id", "company_name"),
                                     "Select Company", new { @class = "form-control select2", })
                                 </div>
+                            </div> 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Job Location</label>
+                                    @*@Html.TextBoxFor(m => m.company_id, new { required = "required", @class = "form-control select2" })*@
+                                    @Html.DropDownList("joblocation_id", new SelectList(ViewBag.Joblocationlist as List<IlmdostPanel.Models.Joblocation>, "joblocation_id", "joblocation_title"),
+                                    "Select Job Location", new { @class = "form-control select2", })
+                                </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">

@@ -10,17 +10,13 @@
 namespace IlmdostPanel.Models
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class Application
+    public partial class sp_helpdiagrams_Result
     {
-        public int application_id { get; set; }
-        public int job_id { get; set; }
-        public int user_id { get; set; }
-        public Nullable<System.DateTime> application_date { get; set; }
-        public string status { get; set; }
-    
-        public virtual Job Job { get; set; }
-        public virtual User User { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

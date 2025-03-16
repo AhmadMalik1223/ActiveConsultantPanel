@@ -14,29 +14,18 @@ namespace IlmdostPanel.Models
     
     public partial class Job
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Job()
-        {
-            this.Applications = new HashSet<Application>();
-            this.Users = new HashSet<User>();
-        }
-    
         public int job_id { get; set; }
-        public Nullable<int> company_id { get; set; }
         public string job_title { get; set; }
         public string job_description { get; set; }
         public Nullable<System.DateTime> start_time { get; set; }
         public Nullable<System.DateTime> end_time { get; set; }
         public Nullable<System.DateTime> created_at { get; set; }
-        public Nullable<int> department_id { get; set; }
+        public int department_id { get; set; }
         public Nullable<int> user_id { get; set; }
+        public string job_nature { get; set; }
+        public string salary_range { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Application> Applications { get; set; }
-        public virtual Company Company { get; set; }
+        public virtual Application Application { get; set; }
         public virtual Department Department { get; set; }
-        public virtual User User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> Users { get; set; }
     }
 }

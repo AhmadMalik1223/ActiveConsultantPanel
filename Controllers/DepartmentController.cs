@@ -9,7 +9,7 @@ namespace IlmdostPanel.Controllers
 {
     public class DepartmentController : Controller
     {
-        JobPortalEntities db = new JobPortalEntities();
+        ActiveConsultantEntities db = new ActiveConsultantEntities();
         // GET: Department
         public ActionResult Adddepartment()
         {
@@ -39,6 +39,7 @@ namespace IlmdostPanel.Controllers
                 }
                 ViewBag.Companylist = db.Companies.ToList();
                 Department dept = new Department();
+           //     dept.department_id = model.department_id;
                 dept.company_id = model.company_id;
                 dept.department_title = model.department_title;
                 db.Departments.Add(dept);
@@ -86,7 +87,7 @@ namespace IlmdostPanel.Controllers
 
                 Department dept = new Department();
                 dept.department_id = model.department_id;
-                dept.company_id = model.company_id;
+               // dept.company_id = model.company_id;
                 dept.department_title = model.department_title;
 
                 db.Entry(dept).State = System.Data.Entity.EntityState.Modified;

@@ -9,7 +9,7 @@ namespace IlmdostPanel.Controllers
 {
     public class CompanyController : Controller
     {
-        JobPortalEntities db = new JobPortalEntities();
+        ActiveConsultantEntities db = new ActiveConsultantEntities();
         // GET: Donor
         public ActionResult Addcompany()
         {
@@ -25,12 +25,11 @@ namespace IlmdostPanel.Controllers
             }
         }
         [HttpPost]
-        public ActionResult Addcompanys(Company model)
+        public ActionResult Addcompany(Company model)
 
         {
             try
             {
-               
                 Company company = new Company();
                 company.company_name = model.company_name;
                 company.company_registration = model.company_registration;
@@ -41,13 +40,9 @@ namespace IlmdostPanel.Controllers
                 company.company_about = model.company_about;
                 company.created_at = DateTime.Now;
                 company.company_status = true;
-
                 db.Companies.Add(company);
                 db.SaveChanges();
-
                 return RedirectToAction("Managecompany");
-                
-
             }
             catch(Exception ex)
             {
@@ -98,12 +93,13 @@ namespace IlmdostPanel.Controllers
                 return View();
             }
         }
-        public ActionResult Deletecompany(int compnay_id) 
+        public ActionResult Deletecompany(int company_id) 
         {
             try
-            {
-                var delcompany = db.Companies.Find(compnay_id);
+             {
+                var delcompany = db.Companies.Find(company_id);
                 db.Companies.Remove(delcompany);
+                db.SaveChanges();
                 return RedirectToAction("Managecompany");
             }
             catch (Exception ex)

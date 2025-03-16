@@ -9,7 +9,7 @@ namespace IlmdostPanel.Controllers
 {
     public class JobController : Controller
     {
-        JobPortalEntities db = new JobPortalEntities();
+        ActiveConsultantEntities db = new ActiveConsultantEntities();
         // GET: Job
         public ActionResult Addjob()
         {
@@ -20,7 +20,9 @@ namespace IlmdostPanel.Controllers
                 }
                 Job job = new Job();    
                 ViewBag.Companylist= db.Companies.ToList();
-                ViewBag.Departmentlist= db.Departments.ToList();
+                ViewBag.Departmentlist = new List<Department>();
+              //  ViewBag.Departmentlist= db.Departments.ToList();
+              //  ViewBag.Joblocationlist = db.Joblocations.ToList();
                 return View();
             }
             catch (Exception ex) { 
@@ -39,9 +41,11 @@ namespace IlmdostPanel.Controllers
                 }
                 ViewBag.Companylist = db.Companies.ToList();
                 ViewBag.Departmentlist = db.Departments.ToList();
+              //  ViewBag.Joblocationlist = db.Joblocations.ToList();
                 Job job = new Job();
-                job.company_id = model.company_id;
+               // job.company_id = model.company_id;
                 job.department_id = model.department_id;
+               // job.joblocation_id = model.joblocation_id;
                 job.job_title = model.job_title;
                 job.start_time  = model.start_time; 
                 job.end_time = model.end_time;
@@ -55,17 +59,27 @@ namespace IlmdostPanel.Controllers
             {
                 ViewBag.Companylist = db.Companies.ToList();
                 ViewBag.Departmentlist = db.Departments.ToList();
+               // ViewBag.Joblocationlist = db.Joblocations.ToList();
+
                 return View();
             }
         }
         public ActionResult Managejob()
         {
-            if (@Session["usernamecshow"] == null)
+            try
             {
-                return RedirectToAction("Login", "Account");
+                if (@Session["usernamecshow"] == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                var reg = db.Jobs.ToList();
+                return View(reg);
             }
-            var reg = db.Jobs.ToList();
-            return View(reg);
+            catch(Exception ex)
+            {
+                return View();
+            }
+            
         }
         public ActionResult Editjob(int job_id)
         {
@@ -78,6 +92,7 @@ namespace IlmdostPanel.Controllers
                 Job job = new Job();
                 ViewBag.Companylist = db.Companies.ToList();
                 ViewBag.Departmentlist = db.Departments.ToList();
+             //   ViewBag.Joblocationlist = db.Joblocations.ToList();
                 var jobget = db.Jobs.Find(job_id);
                 return View(jobget);
             }
@@ -97,9 +112,11 @@ namespace IlmdostPanel.Controllers
                 }
                 ViewBag.Companylist = db.Companies.ToList();
                 ViewBag.Departmentlist = db.Departments.ToList();
+              //  ViewBag.Joblocationlist = db.Joblocations.ToList();
                 Job job = new Job();
                 job.job_id = model.job_id;
-                job.company_id = model.company_id;
+             //   job.joblocation_id = model.joblocation_id;
+              //  job.company_id = model.company_id;
                 job.department_id = model.department_id;
                 job.job_title = model.job_title;
                 job.start_time = model.start_time;
@@ -114,6 +131,7 @@ namespace IlmdostPanel.Controllers
             {
                 ViewBag.Companylist = db.Companies.ToList();
                 ViewBag.Departmentlist = db.Departments.ToList();
+           //     ViewBag.Joblocationlist = db.Joblocations.ToList();
                 return View();
             }
         }
@@ -130,6 +148,18 @@ namespace IlmdostPanel.Controllers
             {
                 return View();
             }
+        }
+        public JsonResult GetDepartmentsByCompany(int companyId)
+        {
+            var departments = db.Departments
+                .Where(d => d.company_id == companyId)
+                .Select(d => new
+                {
+                    department_id = d.department_id,
+                    department_title = d.department_title
+                }).ToList();
+
+            return Json(departments, JsonRequestBehavior.AllowGet);
         }
 
     }

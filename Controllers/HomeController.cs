@@ -9,7 +9,7 @@ namespace IlmdostPanel.Controllers
 {
     public class HomeController : Controller
     {
-        JobPortalEntities db = new JobPortalEntities();
+        ActiveConsultantEntities db = new ActiveConsultantEntities();
         // GET: Home
         public ActionResult Dashboard()
         {
@@ -19,12 +19,18 @@ namespace IlmdostPanel.Controllers
                 {
                     return RedirectToAction("Login", "Account");
                 }
+                var reg = db.Users.ToList();
+                if (reg == null || !reg.Any())
+                {
+                    ViewBag.Message = "No records found.";
+                    return View(new List<User>());
+                }
                 ViewBag.RegisteredCompanies = db.Companies.Count();
                 ViewBag.RegisteredJobs = db.Jobs.Count();
                 ViewBag.ApplicantsApplied = db.Users.Count();
-                ViewBag.ApplicantsHired = db.Users.Count();
+                ViewBag.ApplicantsHired = db.Users.Where(x => (bool)(x.status == true)).Count();
 
-                var reg = db.Users.ToList();
+               
                 return View(reg);
             }
             catch(Exception ex)

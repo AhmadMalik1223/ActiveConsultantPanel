@@ -34,42 +34,42 @@
                                 <div class="form-group">
                                     <label>Company Name</label>
                                     @*@Html.TextBoxFor(m => m.company_id, new { required = "required", @class = "form-control select2" })*@
-
                                     @Html.DropDownList("company_id", new SelectList(ViewBag.Companylist as List<IlmdostPanel.Models.Company>, "company_id", "company_name"),
-                                    "Select Company", new { @class = "form-control select2", })
+                                    "Select Company", new { @class = "form-control select2", @id = "companySelect" })
                                 </div>
                             </div>
+                            <!--<div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Job Location</label>-->
+                            @*@Html.TextBoxFor(m => m.company_id, new { required = "required", @class = "form-control select2" })*@
+                            @*@Html.DropDownList("joblocation_id", new SelectList(ViewBag.Joblocationlist as List<IlmdostPanel.Models.Joblocation>, "joblocation_id", "joblocation_title"),
+                                "Select Job Location", new { @class = "form-control select2", })*@
+                            @*</div>
+                                </div>*@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Department</label>
                                     @Html.DropDownList("department_id", new SelectList(ViewBag.Departmentlist as List<IlmdostPanel.Models.Department>, "department_id", "department_title"),
-                                    "Select Department", new { @class = "form-control select2", })
-
-
+                                    "Select Department", new { @class = "form-control select2", @id = "departmentSelect" })
                                     @*@Html.TextBoxFor(m => m.department_id, new { required = "required", @class = "form-control select2" })*@
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Job Title</label>
-
                                     @Html.TextBoxFor(m => m.job_title, new { required = "required", @class = "form-control select2" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Start Date</label>
-
-
                                     @Html.TextBoxFor(m => m.start_time, new { @class = "form-control", @type = "date", @id = "dob" })
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>End Date</label>
-
-                                    @Html.TextBoxFor(m => m.end_time, new { @class = "form-control", @type = "date", , @id = "dob" })
-
+                                    @Html.TextBoxFor(m => m.end_time, new { @class = "form-control", @type = "date", @id = "dob" })
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -94,4 +94,28 @@
     </section>
     <!-- /.content -->
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#companySelect').change(function () {
+            var companyId = $(this).val();
+            if (companyId) {
+                $.ajax({
+                    url: '@Url.Action("GetDepartmentsByCompany", "Job")',
+                    type: 'GET',
+                    data: { companyId: companyId },
+                    success: function (data) {
+                        var departmentDropdown = $('#departmentSelect');
+                        departmentDropdown.empty();
+                        departmentDropdown.append('<option value="">Select Department</option>');
+                        $.each(data, function (index, item) {
+                            departmentDropdown.append('<option value="' + item.department_id + '">' + item.department_title + '</option>');
+                        });
+                    }
+                });
+            } else {
+                $('#departmentSelect').empty().append('<option value="">Select Department</option>');
+            }
+        });
+    });
+</script>

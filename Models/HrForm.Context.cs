@@ -13,10 +13,10 @@ namespace IlmdostPanel.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class JobPortalEntities : DbContext
+    public partial class ActiveConsultantEntities : DbContext
     {
-        public JobPortalEntities()
-            : base("name=JobPortalEntities")
+        public ActiveConsultantEntities()
+            : base("name=ActiveConsultantEntities")
         {
         }
     

@@ -29,7 +29,7 @@
             <!-- SELECT2 EXAMPLE -->
             <div class="card card-default">
                 <div class="card-body">
-                    @using (Html.BeginForm("Addcompanys", "Company", FormMethod.Post))
+                    @using (Html.BeginForm("Addcompany", "Company", FormMethod.Post))
                     {
                         <div class="row">
                             <div class="col-md-6">
@@ -41,7 +41,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Registration No</label>
-                                    @Html.TextBoxFor(m => m.company_registration, new { @type = "number", required = "required", @class = "form-control select2" })
+                                    @Html.TextBoxFor(m => m.company_registration, new { @type = "text", required = "required", @class = "form-control select2" })
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -53,7 +53,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Contact No</label>
-                                    @Html.TextBoxFor(m => m.company_contact, new { @type = "number", required = "required", @class = "form-control select2" })
+                                    @Html.TextBoxFor(m => m.company_contact, new { @type = "text", required = "required", @class = "form-control select2" })
                                 </div>
                             </div>
                             <!-- /.col -->

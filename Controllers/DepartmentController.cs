@@ -102,16 +102,50 @@ namespace IlmdostPanel.Controllers
         }
         public ActionResult Deletedepartment(int department_id)
         {
+            //try
+            //{
+            //    var remdept = db.Departments.Find(department_id);
+            //    db.Departments.Remove(remdept);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Managedepartment");
+            //}
+            //catch (Exception ex)
+            //{
+            //    return View();
+            //}
             try
             {
-                var remdept = db.Departments.Find(department_id);
-                db.Departments.Remove(remdept);
-                db.SaveChanges();
+                // Check if the company has related departments or jobs
+                var hasJobs = db.Jobs.Any(d => d.department_id == department_id);
+                //var hasJobs = db.Jobs.Any(j => j.company_id == company_id);
+
+                //if (hasDepartments || hasJobs)
+                //{
+                //    ViewBag.Error = "Unable to delete company as it has related departments or jobs.";
+                //    return RedirectToAction("ManageCompany");
+                //}
+
+                var deldepartment = db.Departments.Find(department_id);
+                if (deldepartment != null)
+                {
+                    db.Departments.Remove(deldepartment);
+                    db.SaveChanges();
+                    TempData["SuccessMessage"] = "Department deleted successfully.";
+                    // ViewBag.DeptMsg = "Department deleted successfully.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Department not found.";
+                    // ViewBag.DeptMsg = "Department not found.";
+                }
+
                 return RedirectToAction("Managedepartment");
             }
             catch (Exception ex)
             {
-                return View();
+                TempData["ErrorMessage"] = "An error occurred while trying to delete the department. Please try again.";
+                // ViewBag.DeptMsg = "An error occurred while trying to delete the company. Please try again.";
+                return RedirectToAction("Managedepartment");
             }
         }
     }

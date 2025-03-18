@@ -28,6 +28,15 @@
                         <div class="card-header">
                             <h3 class="card-title">Companies List</h3>
                         </div>
+                        @if (TempData["SuccessMessage"] != null)
+                        {
+                            <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                        }
+
+                        @if (TempData["ErrorMessage"] != null)
+                        {
+                            <div class="alert alert-danger">@TempData["ErrorMessage"]</div>
+                        }
                         <!-- /.card-header -->
                         <div class="card-body">
                             <table id="example1" class="table table-bordered table-striped">
@@ -43,7 +52,8 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach (var item in Model) { 
+                                    @foreach (var item in Model)
+                                    {
                                         <tr>
                                             <td>@item.company_name</td>
                                             <td>@item.company_registration</td>

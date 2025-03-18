@@ -95,16 +95,52 @@ namespace IlmdostPanel.Controllers
         }
         public ActionResult Deletecompany(int company_id) 
         {
+            //try
+            // {
+
+            //    var delcompany = db.Companies.Find(company_id);
+            //    db.Companies.Remove(delcompany);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Managecompany");
+            //}
+            //catch 
+            //{
+            //    ViewBag.Error = "You Are Unable to delete a company";
+            //    return View();
+            //}
             try
-             {
+            {
+                // Check if the company has related departments or jobs
+                var hasDepartments = db.Departments.Any(d => d.company_id == company_id);
+                //var hasJobs = db.Jobs.Any(j => j.company_id == company_id);
+
+                //if (hasDepartments || hasJobs)
+                //{
+                //    ViewBag.Error = "Unable to delete company as it has related departments or jobs.";
+                //    return RedirectToAction("ManageCompany");
+                //}
+
                 var delcompany = db.Companies.Find(company_id);
-                db.Companies.Remove(delcompany);
-                db.SaveChanges();
-                return RedirectToAction("Managecompany");
+                if (delcompany != null)
+                {
+                    db.Companies.Remove(delcompany);
+                    db.SaveChanges();
+                     TempData["SuccessMessage"] = "Company deleted successfully.";
+                  //  ViewBag.CmpnyMsg= "Company deleted successfully.";
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = "Company not found.";
+                    // ViewBag.CmpnyMsg = "Company not found.";
+                }
+
+                return RedirectToAction("ManageCompany");
             }
             catch (Exception ex)
             {
-                return View();
+                // ViewBag.CmpnyMsg = "An error occurred while trying to delete the company. Please try again.";
+                TempData["ErrorMessage"] = "An error occurred while trying to delete the company. Please try again.";
+                return RedirectToAction("ManageCompany");
             }
         }
     }
